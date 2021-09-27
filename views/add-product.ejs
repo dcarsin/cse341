@@ -1,0 +1,40 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs') %>
+            <main>
+                <form action="/admin/add-product" method="POST">
+                    <table class="form-control">
+                        <tr>
+                            <td><label for="title">Title</label></td>
+                            <td><input type="text" name="title" id="title" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="price">Price $:</label></td>
+                            <td><input type="text" name="price" id="price" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="description">Description:</label></td>
+                            <td><textarea name="description" id="description" cols="50" rows="5"></textarea>
+                        </tr>
+                        <tr>
+                            <td><label for="picture">Foto path:</label></td>
+                            <td><input type="text" name="picture" id="picture"></textarea>
+                        </tr>
+                        <tr>
+                            <td><label for="raiting">Raiting:</label></td>
+                            <td><input type="number" name="raiting" placeholder="1-10" id="raiting">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="button" type="submit" value="Add Product">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </main>
+            <%- include('includes/end.ejs') %>
