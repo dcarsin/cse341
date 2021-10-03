@@ -2,35 +2,20 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../util/path');
-const adminData = require('./admin');
+const shopController = require('../controllers/shop');
+
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    const products = adminData.products;
-    res.render('shop', {
-        prods: products, 
-        pageTitle: 'Shop', 
-        path: '/', 
-        activeShop: true,
-        productCSS: true
-    });
-});
+router.get('/', shopController.getIndex);
 
-router.post('/removeItem', (req, res, next) => {
-    const remTitle= req.body.remove;
-    const products = adminData.products;
-    console.log("a remover: ",remTitle);
-    console.log(products);
-    // Splice method removes from a const array
-    for (let i = 0; i < products.length; i++) {
-        if (products[i].title == remTitle) {
-            products.splice(i, 1);
-            break;
-        }
-    }
-    res.redirect('/');
-});
+router.get('/products', shopController.getProducts);
+
+router.get('/products/:productId', shopController.getProduct);             // dinamics goes to end
+
+router.get('/cart', shopController.getCart);
+
+router.get('/orders', shopController.getOrders);
+
+router.get('/checkout', shopController.getCheckout);
 
 module.exports = router;
-
