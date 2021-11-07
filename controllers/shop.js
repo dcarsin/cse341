@@ -108,7 +108,7 @@ exports.postOrder = (req, res, next) => {
     .then(user => {
       const products = user.cart.items.map(i => {
         return { quantity: i.quantity, product: i.productId };
-        // return { quantity: i.quantity, product: { ...i.productId._doc } };
+        // go to end insted of previous line
       });
       const order = new Order({
         user: {
@@ -147,3 +147,4 @@ exports.getOrders = (req, res, next) => {
       return next(error);
     });
 };
+// return { quantity: i.quantity, product: { ...i.productId._doc } };
